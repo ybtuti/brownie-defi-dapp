@@ -1,4 +1,4 @@
-## Brownie-Powered DeFi Lending and Yield Farming
+# Brownie-Powered DeFi Lending and Yield Farming
 
 This project implements a Decentralized Finance (DeFi) protocol built on the Brownie framework. It allows users to seamlessly participate in lending, borrowing, and yield farming activities.
 
@@ -8,12 +8,12 @@ Lending and Borrowing: Deposit your crypto assets to earn interest or borrow fun
 Yield Farming: Earn rewards by providing liquidity to the protocol's lending pool.
 Built on Brownie: Leverages the flexibility and ease-of-use of Brownie for smart contract development.
 
-## Getting Started
+# Getting Started
 
-# Prerequisites:
+## Prerequisites:
 
-Node.js and npm installed (https://nodejs.org/en)
-Python 3 and pip installed (https://www.python.org/downloads/)
+Node.js and npm installed (https://nodejs.org/en)  
+Python 3 and pip installed (https://www.python.org/downloads/)  
 Brownie installed: pip install brownie
 Clone the Repository:
 
@@ -28,18 +28,14 @@ cd <your-project-name>
 npm install
 ```
 
-**Deploy the Contract:**
+## Deploy the Contract:
 
 Follow the instructions in the `deploy.py` file to configure the deployment environment.
 Run the deployment script: `brownie run scripts/deploy.py`
-**Interact with the Contract:**
+## Interact with the Contract:
 
 This project provides scripts for interacting with the deployed contract. Refer to the comments within the scripts located in the scripts folder for instructions.
 
-**Contributing**
-Here's a basic structure for your README file. It includes an introduction, installation instructions, usage, contribution guidelines, and license information.
-
-````markdown
 # DeFi Protocol
 
 This is a decentralized finance (DeFi) protocol powered by Brownie. It enables seamless lending, borrowing, and yield farming opportunities.
@@ -51,7 +47,6 @@ To install the DeFi protocol, you need to have Brownie installed. If you don't h
 ```bash
 pip install eth-brownie
 ```
-````
 
 Then, clone this repository and navigate into it:
 
