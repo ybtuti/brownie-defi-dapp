@@ -18,7 +18,7 @@ contract TokenFarm is Ownable{
 //unStakeTokens
 //issueTokens
 //addAllowedTokens
-//get EthValue
+//get Value
 
     constructor(address _dappTokenAddress) public {
         dappToken = IERC20(_dappTokenAddress);
@@ -33,6 +33,7 @@ contract TokenFarm is Ownable{
         for (uint256 stakersIndex = 0; stakersIndex < stakers.length; stakersIndex++) {
             address recipient = stakers[stakersIndex];
             uint256 userTotalValue = getUserTotalValue(recipient);
+            dappToken.transfer(recipient, userTotalValue);
             //send them token reward
 
             // based on TVL
@@ -45,12 +46,14 @@ contract TokenFarm is Ownable{
         for (uint256 allowedTokensIndex = 0; allowedTokensIndex < allowedTokens.length; allowedTokensIndex++) {
             totalValue = totalValue + getUserSingleTokenValue(_user, allowedTokens[allowedTokensIndex]);
         }
+        return totalValue;
     }
     function getUserSingleTokenValue(address _user, address _token) public view returns (uint256) {
         if (uniqueTokensStaked[_user] <= 0) {
             return 0;
         }
-        getTokenValue(_token);
+        (uint256 price, uint256 decimals) = getTokenValue(_token);
+        return (stakingBalance[_token][_user] * price / (10 ** decimals));
     }
     function getTokenValue(address _token) public view returns (uint256, uint256) {
         //priceFeedAddress
@@ -69,6 +72,14 @@ contract TokenFarm is Ownable{
         if (uniqueTokensStaked[msg.sender] == 1) {
             stakers.push(msg.sender);
         }
+    }
+    function unstakeTokens(address _token) public {
+        uint256 balance = stakingBalance[_token][msg.sender];
+        require(balance > 0, "staking balance cannot be 0");
+        IERC20(_token).transfer(msg.sender, balance);
+        stakingBalance[_token][msg.sender] = 0;
+        uniqueTokensStaked[msg.sender] = uniqueTokensStaked[msg.sender] - 1;
+        
     }
 
     function updateUniqueTokensStaked(address _user, address _token) internal {
