@@ -26,6 +26,7 @@ BLOCK_CONFIRMATIONS_FOR_VERIFICATION = (
 
 contract_to_mock = {
     "fau_token": MockDAI,
+    "dai_usd_price_feed": MockV3Aggregator,
     "eth_usd_price_feed": MockV3Aggregator,
     "weth_token": MockWETH,
     "operator": MockOperator,
@@ -117,22 +118,13 @@ def deploy_mocks(decimals=DECIMALS, initial_value=INITIAL_VALUE):
         decimals, initial_value, {"from": account}
     )
     print(f"Deployed to {mock_price_feed.address}")
-    print("Deploying Mock VRFCoordinator...")
-    mock_vrf_coordinator = VRFCoordinatorV2Mock.deploy(
-        BASE_FEE, GAS_PRICE_LINK, {"from": account}
-    )
-    print(f"Deployed to {mock_vrf_coordinator.address}")
-
-    print("Deploying Mock Oracle...")
-    mock_oracle = MockOracle.deploy(link_token.address, {"from": account})
-    print(f"Deployed to {mock_oracle.address}")
-
-    print("Deploying Mock Operator...")
-    mock_operator = MockOperator.deploy(link_token.address, account, {"from": account})
-    print(f"Deployed to {mock_operator.address}")
-
+    print("Deployihg Mock DAI ...")
+    dai_token = MockDAI.deploy({"from": account})
+    print("Deployed to {dai_token.address}")
+    print("Deploying Mock WETH ...")
+    weth_token = MockWETH.deploy({"from": account})
+    print(f"Deployed to {weth_token.address}")
     print("Mocks Deployed!")
-
 
 def listen_for_event(brownie_contract, event, timeout=200, poll_interval=2):
     """Listen for an event to be fired from a contract.
