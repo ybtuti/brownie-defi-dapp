@@ -4,8 +4,8 @@ from brownie import (
     config,
     LinkToken,
     MockV3Aggregator,
-    MockOracle,
-    VRFCoordinatorV2Mock,
+    MockDAI,
+    MockWETH,
     MockOperator,
     Contract,
     web3,
@@ -25,10 +25,9 @@ BLOCK_CONFIRMATIONS_FOR_VERIFICATION = (
 )
 
 contract_to_mock = {
-    "link_token": LinkToken,
+    "fau_token": MockDAI,
     "eth_usd_price_feed": MockV3Aggregator,
-    "vrf_coordinator": VRFCoordinatorV2Mock,
-    "oracle": MockOracle,
+    "weth_token": MockWETH,
     "operator": MockOperator,
 }
 
