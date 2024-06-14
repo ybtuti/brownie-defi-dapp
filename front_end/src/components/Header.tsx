@@ -17,16 +17,18 @@ export const Header = () => {
   const isConnected = account !== undefined;
 
   return (
-    <div>
-      {isConnected ? (
-        <button color="primary" onClick={deactivate}>
-          Disconnect
-        </button>
-      ) : (
-        <button color="primary" onClick={activateBrowserWallet}>
-          Connect
-        </button>
-      )}
+    <div className={classes.container}>
+      <div>
+        {isConnected ? (
+          <Button color="primary" onClick={deactivate}>
+            Disconnect
+          </Button>
+        ) : (
+          <Button color="primary" onClick={activateBrowserWallet}>
+            Connect
+          </Button>
+        )}
+      </div>
     </div>
   );
 };
