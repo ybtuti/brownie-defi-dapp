@@ -30,5 +30,13 @@ def add_allowed_tokens(token_farm, dict_of_allowed_tokens, account):
         add_tx.wait(1)
         set_tx = token_farm.setPriceFeedContract(token.address, dict_of_allowed_tokens[token], {"from": account})
 
+def update_front_end():
+    # Sending the frontend our config in JSON format
+    with open("brownie-config.yaml", "r") as brownie_config:
+        config_dict = yaml.load(brownie_config, Loader=yaml.FullLoader)
+        with open("./frontend/src/brownie-config.json", "w") as brownie_config_json:
+            json.dump(config_dict, brownie_config_json)
+    print("Frontend has been updated")
+
 def main():
     deploy_token_farm_and_dapp_token()

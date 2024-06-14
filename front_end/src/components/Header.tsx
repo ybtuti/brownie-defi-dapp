@@ -20,11 +20,15 @@ export const Header = () => {
     <div className={classes.container}>
       <div>
         {isConnected ? (
-          <Button color="primary" onClick={deactivate}>
+          <Button color="primary" variant="contained" onClick={deactivate}>
             Disconnect
           </Button>
         ) : (
-          <Button color="primary" onClick={activateBrowserWallet}>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={activateBrowserWallet}
+          >
             Connect
           </Button>
         )}
