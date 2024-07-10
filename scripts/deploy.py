@@ -1,3 +1,5 @@
+from flask import json
+import yaml
 from scripts.helpful_scripts import get_account, get_contract
 from brownie import DappToken, TokenFarm, config, network
 from web3 import Web3
@@ -37,6 +39,8 @@ def update_front_end():
         with open("./frontend/src/brownie-config.json", "w") as brownie_config_json:
             json.dump(config_dict, brownie_config_json)
     print("Frontend has been updated")
+
+      
 
 def main():
     deploy_token_farm_and_dapp_token()
