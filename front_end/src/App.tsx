@@ -1,21 +1,21 @@
-import React from "react";
-import { DAppProvider } from "@usedapp/core";
-import { Header } from "./components/Header";
-import { ChainId } from "@usedapp/core";
-import { Container } from "@material-ui/core";
+import React from 'react';
+import { DAppProvider, ChainId } from "@usedapp/core"
+import { Header } from './components/Header';
+import { Container } from "@material-ui/core"
 
 function App() {
   return (
-    <DAppProvider
-      config={{
-        supportedChains: [ChainId.Sepolia, ChainId.Hardhat, ChainId.Localhost],
-      }}
-    >
+    <DAppProvider config={{
+      supportedChains: [ChainId.Sepolia, 1337]
+
+    }}>
       <Header />
       <Container maxWidth="md">
         <div>Hi!</div>
       </Container>
+
     </DAppProvider>
+
   );
 }
 
