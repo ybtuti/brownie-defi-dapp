@@ -8,6 +8,7 @@ export const main = () => {
     //send the brownie-config to our `src` folder
     //send the build folder
     const { chainId } = useEthers();
-    const networkName = chainId ? helperConfig.networks[chainId].name : 'Not connected';
-    const dappTokenAddress
+    const networkName = chainId ? helperConfig[chainId].name : 'garnache';
+    //const dappTokenAddress
+    return (<div>Hi!</div>)
 }
